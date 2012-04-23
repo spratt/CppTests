@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -31,20 +32,23 @@ private:
 template<class T>
 ostream& operator<<(ostream& out, TwoDimensionalArray<T> tda) {
   for(int row = 0; row < tda.getRows(); ++row) {
-    out << tda.get(row,0);
+    out << setw(2) << tda.get(row,0);
     for(int col = 1; col < tda.getCols(); ++col)
-      out << " " << tda.get(row,col);
+      out << " " << setw(2) << tda.get(row,col);
     out << endl;
   }
   return out;
 }
 
 int main(int argc, char** argv) {
-  TwoDimensionalArray<int> tda(2,2);
-  tda.set(0,0,1);
-  tda.set(0,1,2);
-  tda.set(1,0,3);
-  tda.set(1,1,4);
+  int rows = 5, cols = 5;
+  TwoDimensionalArray<int> tda(rows,cols);
+  {
+    int i = 0;
+    for(int row = 0; row < rows; ++row)
+      for(int col = 0; col < cols; ++col)
+	tda.set(row,col,++i);
+  }
   cout << "TDA:" << endl << tda;
   return 0;
 }
