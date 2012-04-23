@@ -13,7 +13,7 @@ public:
       a[row] = new T[cols];
   }
 
-  T get(int row, int col) {
+  T get(int row, int col) const {
     return a[row][col];
   }
 
@@ -21,8 +21,8 @@ public:
     a[row][col] = datum;
   }
 
-  int getRows() { return rows; }
-  int getCols() { return cols; }
+  int getRows() const { return rows; }
+  int getCols() const { return cols; }
 
 private:
   T** a;
@@ -30,7 +30,7 @@ private:
 };
 
 template<class T>
-ostream& operator<<(ostream& out, TwoDimensionalArray<T> tda) {
+ostream& operator<<(ostream& out, const TwoDimensionalArray<T>& tda) {
   for(int row = 0; row < tda.getRows(); ++row) {
     out << setw(2) << tda.get(row,0);
     for(int col = 1; col < tda.getCols(); ++col)
