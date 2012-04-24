@@ -1,6 +1,6 @@
-TESTS = test test2 test3 test4
+TESTS = test test1 test2 test3 test4
 
 all: ${TESTS}
 
 run: all
-	${foreach test,${TESTS}, ./${test};}
+	@ ${foreach test,${TESTS}, echo ==== ${test} ====; ./${test};}
