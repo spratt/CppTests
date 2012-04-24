@@ -7,12 +7,12 @@ using namespace std;
 #define COUNT_OF2(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
 
 // constant pointer to constant variable
-int size(const int* const a) {
+int size(int const * const a) {
   return COUNT_OF2(a);
 }
 
 // constant pointer
-int foo(int* const a) {
+int foo(int * const a) {
   return ++(a[0]);
 }
 
@@ -36,5 +36,13 @@ int main(int argc, char** argv) {
   cout << foo(a) << endl;
   cout << print(a,asize) << endl;
   cout << print(s,asize) << endl;
+  // ======================================================================
+  int const * const constPtrToConst = s;
+  int       * const constPtr        = a;
+  int const *       ptrToConst      = s;
+  // ======================================================================
+  cout << "Constant pointer to constant datum: " << *constPtrToConst << endl;
+  cout << "Constant pointer to mutable datum:  " << ++(*constPtr) << endl;
+  cout << "Mutable pointer to constant data:   " << *(++ptrToConst) << endl;
   return 0;
 }
