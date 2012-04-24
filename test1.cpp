@@ -9,7 +9,7 @@ using namespace std;
 #define COUNT_OF2(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
 
 // constant pointer to constant variable
-int size(int * a) {
+int size(int const * const a) {
   // DOES NOT WORK
   return COUNT_OF2(a);
 }
