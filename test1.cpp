@@ -2,12 +2,15 @@
 
 using namespace std;
 
+// note that these macros only seem to work in the environment
+// where the array was defined, not from within a function.
 #define COUNT_OF( arr) (sizeof(arr)/sizeof(0[arr]))
 
 #define COUNT_OF2(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
 
 // constant pointer to constant variable
-int size(int const * const a) {
+int size(int * a) {
+  // DOES NOT WORK
   return COUNT_OF2(a);
 }
 
